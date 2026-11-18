@@ -3,27 +3,80 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trinath Pittala · Apps</title>
-<style>
-  :root { color-scheme: dark; }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #160a2e; color: #f4ecff; font: 16px/1.5 system-ui, -apple-system, sans-serif; }
-  main { max-width: 480px; padding: 32px 16px; text-align: center; }
-  h1 { font-size: 22px; letter-spacing: 3px; text-transform: uppercase; margin: 0 0 8px; }
-  p { color: #c9b8e6; margin: 0 0 20px; }
-  a { color: #ffd25a; }
-  ul { list-style: none; padding: 0; margin: 0; }
-  li { margin: 8px 0; }
-</style>
+<title>Games by Trinath Pittala</title>
+<meta name="description" content="Infinite Labyrinth and Lantern City: free games for iPhone, iPad and Android, made by Trinath Pittala.">
+<link rel="canonical" href="https://lasterminator.github.io/">
+<link rel="icon" href="/assets/infinite-labyrinth/icon.png">
+<meta property="og:title" content="Games by Trinath Pittala">
+<meta property="og:description" content="Infinite Labyrinth and Lantern City: free games for iPhone, iPad and Android.">
+<meta property="og:image" content="https://lasterminator.github.io/assets/lantern-city/icon.png">
+<meta name="color-scheme" content="light dark">
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-<main>
-  <h1>Lantern City</h1>
-  <p>A rhythm game by Trinath Pittala.</p>
-  <ul>
-    <li><a href="https://play.google.com/store/apps/details?id=com.trinathpittala.lanterncity">Get it on Google Play</a></li>
-    <li><a href="https://lasterminator.github.io/Privacy-Policy/lantern-city.html">Privacy policy</a></li>
-    <li><a href="/apps/">All apps</a></li>
-  </ul>
-</main>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1><small>Trinath Pittala</small>Games</h1>
+      <p class="tagline">Small games I design and build in my spare time. Both are free on the App Store and Google Play.</p>
+    </div>
+    <nav aria-label="Links">
+      <a href="https://trinathpittala.com">Portfolio</a>
+      <a href="mailto:subhash8111999@gmail.com">Email</a>
+      <a href="https://lasterminator.github.io/Privacy-Policy/">Privacy policies</a>
+    </nav>
+  </header>
+
+  <!-- One <article class="tile"> per game. To add a game, copy one and change it. -->
+  <main class="games">
+    <article class="tile" data-game="infinite-labyrinth" style="view-transition-name: tile-infinite-labyrinth">
+      <header>
+        <img class="icon" src="/assets/infinite-labyrinth/icon.png" alt="" width="96" height="96" style="view-transition-name: icon-infinite-labyrinth">
+        <div>
+          <p class="meta">Maze · iPhone, iPad, Android</p>
+          <h2><a href="/infinite-labyrinth/">Infinite Labyrinth</a></h2>
+        </div>
+      </header>
+      <p class="lead">Find the way out. Beat the clock. A fast, swipe-to-run maze game set in a torch-lit stone labyrinth, with a 60-level Journey, a Daily Maze and an Endless mode.</p>
+      <p class="pills">
+        <a class="pill solid" href="/infinite-labyrinth/">About the game →</a>
+        <a class="pill" href="https://apps.apple.com/us/app/infinite-labyrinth/id6824725791">App Store ↗</a>
+        <a class="pill" href="https://play.google.com/store/apps/details?id=com.subhash8111999.infinitelabyrinth.game">Google Play ↗</a>
+      </p>
+      <a class="peek" href="/infinite-labyrinth/" tabindex="-1" aria-hidden="true">
+        <img src="/assets/infinite-labyrinth/1.jpg" alt="" width="479" height="1040">
+        <img src="/assets/infinite-labyrinth/2.jpg" alt="" width="479" height="1040">
+        <img src="/assets/infinite-labyrinth/4.jpg" alt="" width="479" height="1040">
+      </a>
+    </article>
+
+    <article class="tile" data-game="lantern-city" style="view-transition-name: tile-lantern-city">
+      <header>
+        <img class="icon" src="/assets/lantern-city/icon.png" alt="" width="96" height="96" style="view-transition-name: icon-lantern-city">
+        <div>
+          <p class="meta">Rhythm · iPhone, iPad, Android</p>
+          <h2><a href="/lantern-city/">Lantern City</a></h2>
+        </div>
+      </header>
+      <p class="lead">A rhythm game about one thing: tapping right on the beat. Every catch uncovers a piece of a hidden picture, across twenty-five islands.</p>
+      <p class="pills">
+        <a class="pill solid" href="/lantern-city/">About the game →</a>
+        <a class="pill" href="https://apps.apple.com/us/app/lantern-city-rhythm-game/id6824568843">App Store ↗</a>
+        <a class="pill" href="https://play.google.com/store/apps/details?id=com.trinathpittala.lanterncity">Google Play ↗</a>
+      </p>
+      <a class="peek" href="/lantern-city/" tabindex="-1" aria-hidden="true">
+        <img src="/assets/lantern-city/1.jpg" alt="" width="479" height="1040">
+        <img src="/assets/lantern-city/3.jpg" alt="" width="479" height="1040">
+        <img src="/assets/lantern-city/4.jpg" alt="" width="479" height="1040">
+      </a>
+    </article>
+  </main>
+
+  <footer class="foot">
+    <span>© Trinath Pittala</span>
+    <a href="https://trinathpittala.com">trinathpittala.com</a>
+  </footer>
+</div>
 </body>
 </html>

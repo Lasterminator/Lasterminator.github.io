@@ -1,0 +1,447 @@
+/*
+ * The one stylesheet for every page on this site.
+ * Colours are the variables at the top. Each game has its own tile colour,
+ * set by data-game="..." on the element.
+ */
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/assets/fonts/bricolage-grotesque.woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/assets/fonts/geist-mono.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --stage: #f1f2f5;
+  --card: #ffffff;
+  --ink: #0d0f14;
+  --soft: #5a6070;
+  --line: #d6d9e0;
+
+  --display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --mono: 'Geist Mono', ui-monospace, Menlo, monospace;
+  --radius: 22px;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --stage: #0a0b0f;
+    --card: #15171d;
+    --ink: #f3f4f6;
+    --soft: #9399a8;
+    --line: #23262f;
+  }
+}
+
+[data-game='infinite-labyrinth'] {
+  --fill: #e3ad48;
+  --on: #1d1305;
+}
+
+[data-game='lantern-city'] {
+  --fill: #6a3bdb;
+  --on: #ffffff;
+}
+
+/* Pages move into one another instead of blinking (browsers that support it). */
+@view-transition {
+  navigation: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--stage);
+  color: var(--ink);
+  font: 400 1.0625rem/1.5 var(--display);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--stage);
+}
+
+/* ---------- Shared pieces ---------- */
+
+.wrap {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.mono,
+.top nav,
+.foot {
+  font: 0.8rem var(--mono);
+}
+
+.meta {
+  font: 0.75rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.top h1 {
+  font-size: clamp(2.25rem, 6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+.top h1 small {
+  display: block;
+  margin-bottom: 0.6rem;
+  font: 0.8rem var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+.tagline {
+  max-width: 34rem;
+  margin-top: 0.75rem;
+  color: var(--soft);
+  line-height: 1.35;
+}
+
+.top nav,
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+}
+
+.top nav a,
+.foot a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.top nav a:hover,
+.foot a:hover {
+  border-color: var(--ink);
+}
+
+.foot {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--soft);
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pill {
+  padding: 0.55rem 1.05rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.pill:hover,
+.pill.solid {
+  background: var(--on, var(--ink));
+  color: var(--fill, var(--stage));
+  border-color: var(--on, var(--ink));
+}
+
+.pill.solid:hover {
+  background: none;
+  color: inherit;
+}
+
+.icon {
+  flex: none;
+  width: clamp(4rem, 9vw, 6rem);
+  border-radius: 22%;
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.25);
+}
+
+/* A coloured block in a game's colour: the tiles on the home page and the
+   banner at the top of a game's own page. */
+.tile {
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border-radius: var(--radius);
+  background: var(--fill);
+  color: var(--on);
+  overflow: hidden;
+}
+
+.tile :focus-visible {
+  outline-color: var(--on);
+}
+
+.tile header {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2vw, 1.4rem);
+}
+
+.tile h2,
+.tile h1 {
+  margin-top: 0.3rem;
+  font-size: clamp(1.9rem, 4.2vw, 3.25rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.tile h2 a {
+  text-decoration: none;
+}
+
+.lead {
+  max-width: 40rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.4;
+}
+
+/* ---------- Home page: one tile per game ---------- */
+
+.games {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 860px) {
+  .games {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-auto-flow: column;
+  }
+}
+
+/* Tiles are equal height; the screenshots sit on the bottom edge of each. */
+.games .tile {
+  grid-template-rows: auto auto auto 1fr;
+}
+
+/* Three screenshots that rise out of the bottom edge of the tile. */
+.peek {
+  align-self: end;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.5rem, 1.5vw, 1rem);
+  height: clamp(11rem, 26vw, 19rem);
+  margin: 0.5rem 0 calc(-1 * clamp(1.25rem, 3vw, 2.25rem));
+}
+
+.peek img {
+  width: 100%;
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 0 0 1.5px rgb(0 0 0 / 0.25);
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.peek img:nth-child(2) {
+  margin-top: 1.5rem;
+}
+
+.peek img:nth-child(3) {
+  margin-top: 3rem;
+}
+
+.tile:hover .peek img {
+  transform: translateY(-0.75rem);
+}
+
+.tile:hover .peek img:nth-child(2) {
+  transition-delay: 0.04s;
+}
+
+.tile:hover .peek img:nth-child(3) {
+  transition-delay: 0.08s;
+}
+
+/* ---------- A game's own page ---------- */
+
+.back {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font: 0.8rem var(--mono);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.back:hover {
+  border-color: var(--ink);
+}
+
+/* Screenshots in a row you can swipe or scroll sideways. */
+.shots {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+  padding-bottom: 0.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+.shots img {
+  flex: none;
+  width: clamp(11rem, 22vw, 15rem);
+  border-radius: 18px;
+  border: 1.5px solid var(--line);
+  scroll-snap-align: start;
+}
+
+.facts {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 860px) {
+  .facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fact {
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  padding: clamp(1.1rem, 2.4vw, 1.6rem);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.fact.wide {
+  grid-column: 1 / -1;
+}
+
+.fact h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.fact p,
+.fact li {
+  color: var(--soft);
+}
+
+.fact ul {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.fact li b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* A small square in the game's colour before each list item. */
+.fact li {
+  position: relative;
+  padding-left: 1.15rem;
+}
+
+.fact li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--fill);
+}
+
+@media (min-width: 700px) {
+  .fact.wide ul {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+  }
+}
+
+/* ---------- 404 ---------- */
+
+.lost {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: 1rem;
+}
+
+.lost .tile {
+  --fill: var(--ink);
+  --on: var(--stage);
+  width: min(34rem, 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
